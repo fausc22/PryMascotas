@@ -83,10 +83,8 @@
   <ItemGroup>
     <Content Include="img\conejo.jpg" />
     <Content Include="img\gato-persa.jpg" />
-    <Content Include="img\gato-siames.jfif" />
     <Content Include="img\gato-siames1.jpg" />
     <Content Include="img\loro.jpg" />
-    <Content Include="img\pastor-aleman.jfif" />
     <Content Include="img\pastor-aleman1.jpg" />
     <Content Include="img\perro-golden.jpg" />
     <Content Include="img\tortuga.jpg" />

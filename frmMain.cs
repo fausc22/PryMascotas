@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -19,84 +20,9 @@ namespace PryMascotas
 
         private void frmMain_Load(object sender, EventArgs e)
         {
+
+
             
-            List<string> ListaMascotas = new List<string>();
-
-            ClsMascota Mascota1 = new ClsMascota
-            {
-                nombre = "Guardian",
-                edad = "5 años",
-                tipoAnimal = "Perro pastor aleman",
-                FotoAnimal = Image.FromFile("pastor-aleman1.jpg")
-            };
-
-            ListaMascotas.Add(Mascota1.tipoAnimal);
-            
-            
-
-            ClsMascota Mascota2 = new ClsMascota
-            {
-                nombre = "Pelos",
-                edad = "2 años",
-                tipoAnimal = "Gato Persa",
-                
-            };
-
-            ListaMascotas.Add(Mascota2.tipoAnimal);
-
-            ClsMascota Mascota3 = new ClsMascota
-            {
-                nombre = "Negrito",
-                edad = "3 años",
-                tipoAnimal = "Gato Siames",
-                
-            };
-
-            ListaMascotas.Add(Mascota3.tipoAnimal);
-
-            ClsMascota Mascota4 = new ClsMascota
-            {
-                nombre = "Pipo",
-                edad = "2 años",
-                tipoAnimal = "Loro",
-                
-            };
-
-            ListaMascotas.Add(Mascota4.tipoAnimal);
-
-            ClsMascota Mascota5 = new ClsMascota
-            {
-                nombre = "Esponjoso",
-                edad = "1 año",
-                tipoAnimal = "Conejo",
-                
-            };
-
-            ListaMascotas.Add(Mascota5.tipoAnimal);
-
-            ClsMascota Mascota6 = new ClsMascota
-            {
-                nombre = "Oscar",
-                edad = "6 años",
-                tipoAnimal = "Tortuga",
-                
-            };
-
-            ListaMascotas.Add(Mascota6.tipoAnimal);
-
-            ClsMascota Mascota7 = new ClsMascota
-            {
-                nombre = "Charito",
-                edad = "4 años",
-                tipoAnimal = "Perro Golden",
-                
-            };
-
-            ListaMascotas.Add(Mascota7.tipoAnimal);
-
-            listMascotas.DataSource = ListaMascotas;
-
-         
 
 
 
@@ -105,13 +31,133 @@ namespace PryMascotas
 
         private void listMascotas_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
+            
+
+            if (listMascotas.Text == "Perro Golden")
+            { 
+                
+                fotoMascota.Image = Image.FromFile("perro-golden.jpg");
+                lblTipo.Visible = true;
+                lblEdad.Visible = true;
+
+            }
+            else
+            {
+                if (cmbTipo.Text == "Gato Persa")
+                {
+                    fotoMascota.Image = Image.FromFile("gato-persa.jpg");
+                    lblTipo.Visible = true;
+                    lblEdad.Visible = true;
+                }
+                else
+                {
+                    if (cmbTipo.Text == "Gato Siames")
+                    {
+                        fotoMascota.Image = Image.FromFile("gato-siames1.jpg");
+                        lblTipo.Visible = true;
+                        lblEdad.Visible = true;
+                    }
+                    else
+                    {
+                        if (cmbTipo.Text == "Perro Pastor Aleman")
+                        {
+                            fotoMascota.Image = Image.FromFile("pastor-aleman1.jpg");
+                            lblTipo.Visible = true;
+                            lblEdad.Visible = true;
+                        }
+                        else
+                        {
+                            if (cmbTipo.Text == "Tortuga")
+                            {
+                                fotoMascota.Image = Image.FromFile("tortuga.jpg");
+                                lblTipo.Visible = true;
+                                lblEdad.Visible = true;
+
+                            }
+                            else
+                            {   
+                                if (cmbTipo.Text == "Loro")
+                                {
+                                    fotoMascota.Image = Image.FromFile("loro.jpg");
+                                    lblTipo.Visible = true;
+                                    lblEdad.Visible = true;
+
+                                }
+                                else
+                                {
+                                    if (cmbTipo.Text == "Conejo")
+                                    {
+                                        fotoMascota.Image = Image.FromFile("conejo.jpg");
+                                        lblTipo.Visible = true;
+                                        lblEdad.Visible = true;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         private void btnAlimentar_Click(object sender, EventArgs e)
         {
+            ClsMascota Alimentar = new ClsMascota();
+            Alimentar.nombre = listMascotas.SelectedItem.ToString();
+            MessageBox.Show(Alimentar.AlimentarMascota());
 
-            MessageBox.Show(ClsMascota.AlimentarMascota());
+        }
+
+        public void btnAgregar_Click(object sender, EventArgs e)
+        {
+            string[] GuardarNombre = new string[10];
+
+            ClsMascota NuevaMascota = new ClsMascota();
+            NuevaMascota.nombre = txtNombre.Text;
+            NuevaMascota.edad = txtEdad.Text;
+            NuevaMascota.tipoAnimal = cmbTipo.Text;
+            List<ClsMascota> ListarMascotas = new List<ClsMascota>();
+            ListarMascotas.Add(NuevaMascota);
+
+            
+                foreach (var item in ListarMascotas)
+                {
+                    listMascotas.Items.Add(item.tipoAnimal);
+                    lblTipo.Text = item.nombre;
+                    lblEdad.Text = item.edad + " " + "años";
+                    
+                }
+
+
+
+            txtNombre.Clear();
+            txtEdad.Clear();
+            cmbTipo.SelectedIndex = -1;
+            
+            
+
+
+
+
+        }
+
+        private void btnCuidar_Click(object sender, EventArgs e)
+        {
+            ClsMascota Cuidar = new ClsMascota();
+            Cuidar.nombre = listMascotas.SelectedItem.ToString();
+            MessageBox.Show(Cuidar.CuidarMascota());
+        }
+
+        private void btnJugar_Click(object sender, EventArgs e)
+        {
+            ClsMascota Jugar = new ClsMascota();
+            Jugar.nombre = listMascotas.SelectedItem.ToString();
+            MessageBox.Show(Jugar.JugarMascota());
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
+

@@ -26,7 +26,7 @@ namespace PryMascotas
         public string CuidarMascota()
         { return "Has cuidado a" + " " + nombre; }
 
-
+        
        
 
         
