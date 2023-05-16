@@ -8,6 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+
+
 
 namespace PryMascotas
 {
@@ -43,7 +46,7 @@ namespace PryMascotas
             }
             else
             {
-                if (cmbTipo.Text == "Gato Persa")
+                if (listMascotas.Text == "Gato Persa")
                 {
                     fotoMascota.Image = Image.FromFile("gato-persa.jpg");
                     lblTipo.Visible = true;
@@ -51,7 +54,7 @@ namespace PryMascotas
                 }
                 else
                 {
-                    if (cmbTipo.Text == "Gato Siames")
+                    if (listMascotas.Text == "Gato Siames")
                     {
                         fotoMascota.Image = Image.FromFile("gato-siames1.jpg");
                         lblTipo.Visible = true;
@@ -59,7 +62,7 @@ namespace PryMascotas
                     }
                     else
                     {
-                        if (cmbTipo.Text == "Perro Pastor Aleman")
+                        if (listMascotas.Text == "Perro Pastor Aleman")
                         {
                             fotoMascota.Image = Image.FromFile("pastor-aleman1.jpg");
                             lblTipo.Visible = true;
@@ -67,7 +70,7 @@ namespace PryMascotas
                         }
                         else
                         {
-                            if (cmbTipo.Text == "Tortuga")
+                            if (listMascotas.Text == "Tortuga")
                             {
                                 fotoMascota.Image = Image.FromFile("tortuga.jpg");
                                 lblTipo.Visible = true;
@@ -76,7 +79,7 @@ namespace PryMascotas
                             }
                             else
                             {   
-                                if (cmbTipo.Text == "Loro")
+                                if (listMascotas.Text == "Loro")
                                 {
                                     fotoMascota.Image = Image.FromFile("loro.jpg");
                                     lblTipo.Visible = true;
@@ -85,7 +88,7 @@ namespace PryMascotas
                                 }
                                 else
                                 {
-                                    if (cmbTipo.Text == "Conejo")
+                                    if (listMascotas.Text == "Conejo")
                                     {
                                         fotoMascota.Image = Image.FromFile("conejo.jpg");
                                         lblTipo.Visible = true;
